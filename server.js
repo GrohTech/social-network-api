@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(require('./routes'));
 
+// Set up Mongoose to connect to specified db when app is started
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/social-network-api', {
   useFindAndModify: false,
   useNewUrlParser: true,

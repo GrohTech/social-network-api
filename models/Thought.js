@@ -27,11 +27,12 @@ const ThoughtSchema = new Schema(
             getters: true,
             virtuals: true
     },
+    // prevents virtuals from creating duplicate of _id as `id`
     id: false
 },
 );
 // Retrieves length of the thought's reactions
-CommentSchema.virtual('reactionCount').get(function() {
+ThoughtSchema.virtual('reactionCount').get(function() {
   return this.reactions.length;
 });
 

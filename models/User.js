@@ -1,4 +1,6 @@
 const { Schema, model, Types} = require('mongoose');
+
+// Import dateFormat
 const dateFormat = require('../utils/dateFormat');
 
 const UserSchema = new Schema(
@@ -34,12 +36,10 @@ const UserSchema = new Schema(
     },
     // prevents virtuals from creating duplicate of _id as `id`
     id: false
-
-
 }
 );
 
-// Retrieves length of the thought's reactions
+// Retrieves total friends
 UserSchema.virtual('friendCount').get(function(){
     return this.friends.length;
 });

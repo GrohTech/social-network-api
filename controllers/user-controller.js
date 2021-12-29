@@ -112,8 +112,8 @@ getUserById({ params }, res) {
         .catch(err => {
             console.log(err);
             res.status(400).json(err);
-        });       
-        
-    };
+        });          
+    }
+};
 
 module.exports = userController;

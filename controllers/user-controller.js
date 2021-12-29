@@ -76,7 +76,7 @@ getUserById({ params }, res) {
     // POST to add a new friend to a user's friend list
     addFriend({ params }, res) {
         User.findOneAndUpdate(
-            { id: params.UserId },
+            { _id: params.UserId },
             { $push: { friends: _id } },
             { new: true })
         .then(dbUserData => {
@@ -94,9 +94,26 @@ getUserById({ params }, res) {
         });             
     },
 
-// DELETE to remove a friend from a user's friend list
-removeFriend
-
-};
+    // DELETE to remove a friend from a user's friend list
+    removeFriend({ params}, res) {
+        User.findOneAndUpdate(
+            { _id: params.UserId },
+            { $pull: { friends: _id } },
+            { new: true })
+        .then(dbUserData => {
+            if (!dbUserData) {
+                res.status(404).json({
+                    message: 'No user found with this id!'
+                });
+                return;
+            }
+            res.json(dbUserData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });       
+        
+    };
 
 module.exports = userController;

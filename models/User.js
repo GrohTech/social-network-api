@@ -1,12 +1,10 @@
 const { Schema, model, Types} = require('mongoose');
 
-// Import dateFormat
-const dateFormat = require('../utils/dateFormat');
-
 const UserSchema = new Schema(
 {
     username: {
         type: String,
+        unique: true,
         required: 'Username is required',
         trim: true
     },

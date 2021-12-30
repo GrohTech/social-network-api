@@ -1,9 +1,9 @@
-const { Thought, User } = require('../models');
+const { User, Thought } = require('../models');
 
 const userController = {
 
 // GET all users
-getAllUsers(req,res) {
+getAllUsers(req, res) {
     User.find({})
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
@@ -28,7 +28,7 @@ getUserById({ params }, res) {
     .catch(err => {
         console.log(err);
         res.status(400).json(err);
-    });
+    })
 },
     // POST to create a new user
     createUser({ body }, res) {

@@ -1,11 +1,11 @@
 const { Thought, User } = require('../models');
 
-const thoughtController = {
+// const thoughtController = {
 
 
 
 
-};
+// };
 
 module.exports = thoughtController;
 

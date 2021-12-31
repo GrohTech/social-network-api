@@ -13,11 +13,12 @@ const reactionSchema = new Schema({
     reactionBody: {
         type: String,
         required: true,
-        maxlength: 280
+        minLength: 1,
+        maxLength: 280
     },
     username: {
         type: String,
-        required: 'Username is required'
+        required: true
     },
     createdAt: {
         type: Date,

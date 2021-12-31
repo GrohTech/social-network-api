@@ -76,8 +76,8 @@ getUserById({ params }, res) {
     // POST to add a new friend to a user's friend list
     addFriend({ params }, res) {
         User.findOneAndUpdate(
-            { _id: params.UserId },
-            { $push: { friends: _id } },
+            { _id: params.id },
+            { $addToSet: { friends: params.friendId } },
             { new: true })
         .then(dbUserData => {
             if (!dbUserData) {
@@ -95,10 +95,10 @@ getUserById({ params }, res) {
     },
 
     // DELETE to remove a friend from a user's friend list
-    removeFriend({ params}, res) {
+    removeFriend({ params }, res) {
         User.findOneAndUpdate(
-            { _id: params.UserId },
-            { $pull: { friends: _id } },
+            { _id: params.id },
+            { $pull: { friends: params.friendId } },
             { new: true })
         .then(dbUserData => {
             if (!dbUserData) {

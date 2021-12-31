@@ -94,10 +94,10 @@ const thoughtController = {
     // /api/thoughts/:thoughtId/reactions
 
     // POST to create a reaction stored in a single thought's reactions array field
-    createReaction({ params }, res) {
+    createReaction({ params, body }, res) {
         Thought.findOneAndUpdate(
-            { _id: params.UserId },
-            { $push: { reactions: _id } },
+            { _id: params.thoughtId },
+            { $push: { reactions: body } },
             { new: true })
         .then(dbThoughtData => {
             if (!dbThoughtData) {
@@ -118,17 +118,17 @@ const thoughtController = {
     // DELETE to pull and remove a reaction by the reaction's reactionId value
     deleteReaction({ params}, res) {
         Thought.findOneAndUpdate(
-            { _id: params.UserId },
-            { $pull: { reactions: { reactionId: _id } } },
+            { _id: params.thoughtId },
+            { $pull: { reactions: { reactionId: params.reactionId } } },
             { new: true })
-        .then(dbThoughtData => {
-            if (!dbThoughtData) {
+        .then(dbUserData => {
+            if (!dbUserData) {
                 res.status(404).json({
                     message: 'No user found with this id!'
                 });
                 return;
             }
-            res.json(dbThoughtData);
+            res.json(dbUserData);
         })
         .catch(err => {
             console.log(err);

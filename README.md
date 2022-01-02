@@ -27,10 +27,6 @@ Add npm dependencies:
 ```
 npm install
 ```
-Make sure MongoDB is running:
-```
-mongo
-```
 Start server:
 ```
 npm start
@@ -40,7 +36,8 @@ npm start
 2. Test GET, POST, PUT, DELETE routes
 
 
-[App Demo Video]()
+* [App Demo Video - User routes](https://watch.screencastify.com/v/K9tFri5Vgnd2mjEkZ2eV)
+* [App Demo Video - Thought routes](https://watch.screencastify.com/v/juh2FnEah94uqF69Rw4m)
 
 ## Languages & Tools
 
